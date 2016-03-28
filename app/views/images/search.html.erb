@@ -27,4 +27,6 @@
     </div>
   </div>
 </div>
-<%= render partial: "shared/modal" %>
+<% if user_signed_in? %>
+  <%= render partial: "shared/modal" %>
+<% end %>
