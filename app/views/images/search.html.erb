@@ -9,8 +9,15 @@
                 <%= image_tag image.url_for(:static) %>
               <% end %>
               <div class="image-menu">
-                <%= link_to "#", data: {giphy_id: image.id, toggle: "modal", target: "#imageModal"}, class: "btn btn-sm btn-primary pull-right" do %>
-                  <%= fa_icon "save" %>
+                <% if user_signed_in? %>
+                  <%= link_to "#", data: {giphy_id: image.id, toggle: "modal", target: "#imageModal"}, class: "btn btn-sm btn-primary pull-right" do %>
+                    <%= fa_icon "save" %> Save
+                  <% end %>
+                <% else %>
+                  <%= link_to "#", data: {giphy_id: image.id, toggle: "modal", target: "#imageModal"}, class: "btn btn-sm btn-primary pull-right" do %>
+                    <%= fa_icon "share" %>
+                    Sign up to save
+                  <% end %>
                 <% end %>
               </div>
             </div>

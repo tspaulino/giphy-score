@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
 
   def search
     @images = GiphyService.search(params[:q])
-    @image = current_user.images.build
+    @image = current_user.images.build if user_signed_in?
   end
 
   def create
