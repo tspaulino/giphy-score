@@ -9,13 +9,7 @@
   .giphy-image-container {
     height: 250px;
     margin: 20px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    flex:1 1 auto;
-
+    
     .giphy-image {
       float: left;
     }
