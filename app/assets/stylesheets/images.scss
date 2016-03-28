@@ -1,0 +1,22 @@
+// Place all the styles related to the images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.giphy-images {
+  -webkit-column-count: 4; /* Chrome, Safari, Opera */
+  -moz-column-count: 4; /* Firefox */
+  column-count: 4;
+
+  .giphy-image-container {
+    height: 250px;
+    margin: 20px;
+    display: inline-block;
+
+    .giphy-image {
+      float: left;
+    }
+  }
+
+  .image-menu {
+    margin: 5px 0;
+  }
+}

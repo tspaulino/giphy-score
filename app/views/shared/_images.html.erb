@@ -1,0 +1,23 @@
+<div class="giphy-images">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="images">
+        <% @images.each do |image| %>
+          <div class="giphy-image-container">
+            <div class="giphy-image well">
+              <%= link_to image.giphy_image.url_for(:source) do %>
+                <%= image_tag image.giphy_image.url_for(:static) %>
+              <% end %>
+              <div class="image-menu">
+                <p>Added by <%= link_to image.user.name, user_path(image.user), class: "bold" %> </p>
+                <% image.tag_list.each do |tag| %>
+                  <%= link_to tag, tags_images_path(tag: tag), class: "btn btn-xs btn-default" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

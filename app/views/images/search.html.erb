@@ -1,0 +1,23 @@
+<div class="giphy-images">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="images">
+        <% @images.each do |image| %>
+          <div class="giphy-image-container">
+            <div class="giphy-image well">
+              <%= link_to image.url_for(:source) do %>
+                <%= image_tag image.url_for(:static) %>
+              <% end %>
+              <div class="image-menu">
+                <%= link_to "#", data: {giphy_id: image.id, toggle: "modal", target: "#imageModal"}, class: "btn btn-sm btn-primary pull-right" do %>
+                  <%= fa_icon "save" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render partial: "shared/modal" %>
