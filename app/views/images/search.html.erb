@@ -1,32 +1,33 @@
-<div class="giphy-images">
-  <div class="row">
-    <div class="col-md-12">
-      <div id="images">
-        <% @images.each do |image| %>
-          <div class="giphy-image-container">
-            <div class="giphy-image well">
-              <%= link_to image.url_for(:source) do %>
-                <%= image_tag image.url_for(:static) %>
-              <% end %>
-              <div class="image-menu">
-                <% if user_signed_in? %>
-                  <%= link_to "#", data: {giphy_id: image.id, toggle: "modal", target: "#imageModal"}, class: "btn btn-sm btn-primary pull-right" do %>
-                    <%= fa_icon "save" %> Save
-                  <% end %>
-                <% else %>
-                  <%= link_to "#", data: {giphy_id: image.id, toggle: "modal", target: "#imageModal"}, class: "btn btn-sm btn-primary pull-right" do %>
-                    <%= fa_icon "share" %>
-                    Sign up to save
-                  <% end %>
-                <% end %>
-              </div>
-            </div>
+<% @images.in_groups_of(4, false) do |group| %>
+  <div class="row row-flex row-flex-wrap">
+    <% group.each do |image| %>
+      <div class="col-md-3">
+        <div class="panel panel-default flex-col">
+          <div class="panel-heading">
+            <%= link_to image.bitly_url, image.bitly_url, target: "_blank" %>
           </div>
-        <% end %>
+          <div class="panel-body image-src flex-grow">
+            <%= link_to image.url_for(:source) do %>
+              <%= image_tag image.url_for(:static) %>
+            <% end %>
+          </div>
+          <div class="panel-footer">
+            <% if user_signed_in? %>
+              <%= link_to "#", data: {giphy_id: image.id, toggle: "modal", target: "#imageModal"}, class: "btn btn-sm btn-primary pull-right" do %>
+                <%= fa_icon "save" %> Save
+              <% end %>
+            <% else %>
+              <%= link_to new_user_session_path, class: "btn btn-sm btn-primary pull-right" do %>
+                <%= fa_icon "share" %>
+                Sign in to save
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
-</div>
+<% end %>
 <% if user_signed_in? %>
   <%= render partial: "shared/modal" %>
 <% end %>
