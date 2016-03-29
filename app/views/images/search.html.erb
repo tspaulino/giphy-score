@@ -5,7 +5,7 @@
           <div class="panel panel-default flex-col">
             <% cache("search-#{image.id}") do %>
               <div class="panel-heading">
-                <%= link_to image.bitly_url, image.bitly_url, target: "_blank" %>
+                <%= link_to image.bitly_url, image.url_for(:source), target: "_blank" %>
               </div>
               <div class="panel-body image-src flex-grow">
                 <%= link_to image.url_for(:source) do %>
