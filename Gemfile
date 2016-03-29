@@ -34,6 +34,8 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'faraday'
 gem "font-awesome-rails"
+gem 'oj', '~> 2.12.14'
+gem 'rollbar', '~> 2.8.3'
 gem "twitter-bootstrap-rails"
 
 group :development, :test do
